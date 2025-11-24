@@ -1,0 +1,15 @@
+[Unit]
+Description=Nigerland Consult Backend API
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/nigerland/backend
+Environment="PATH=/var/www/nigerland/venv/bin"
+ExecStart=/var/www/nigerland/venv/bin/uvicorn server:app --host 0.0.0.0 --port 8001 --workers 4
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
